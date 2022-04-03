@@ -22,7 +22,7 @@ class BookInline(admin.TabularInline):
 # Define the admin class
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
-        list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
+    list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
 
     fields = ['last_name', 'first_name', ('date_of_birth', 'date_of_death')]
 
@@ -52,4 +52,3 @@ class BookInstanceAdmin(admin.ModelAdmin):
         (None, {'fields': ('book', 'imprint', 'id')}),
         ('Availability', {'fields': ('status', 'due_back')})
     )
-

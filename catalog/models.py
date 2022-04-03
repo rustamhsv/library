@@ -45,6 +45,15 @@ class Book(models.Model):
 
     display_genre.short_description = 'Genre'
 
+    # many books - many genres
+    language = models.ManyToManyField(Language, help_text='Select language of the book')
+
+    def display_language(self):
+        """Create a string for the Genre. This is required to display genre in Admin."""
+        return ', '.join(language.name for language in self.language.all()[:3])
+
+    display_language.short_description = 'Language'
+
     def __str__(self):
         """ String representation for model object """
         return self.title
