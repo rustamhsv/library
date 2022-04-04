@@ -20,11 +20,16 @@ def index(request):
     # animal = Book.objects.filter(title__icontains='Pride').count()
     # print(animal)
 
+    # Calc number of visits to this view with session variable
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
     context = {
         'num_books': num_books,
         'num_instances': num_instances,
         'num_instances_available': num_instances_available,
-        'num_authors': num_authors
+        'num_authors': num_authors,
+        'num_visits': num_visits,
     }
 
     return render(request, 'index.html', context=context)
