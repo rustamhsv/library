@@ -12,9 +12,12 @@
         <li>
           <a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}</a>
              ({{ author.date_of_birth }} - {{ author.date_of_death }})
+            <a href="{% url 'author-update' author.id %}">update</a>
+            <a style="color:red;" href="{% url 'author-delete' author.id %}">delete</a>
         </li>
         {% endfor %}
       </ul>
+      <a href="{% url 'author-create'%}">Create new author</a>
     {% else %}
       <p>No authors available.</p>
     {% endif %}
